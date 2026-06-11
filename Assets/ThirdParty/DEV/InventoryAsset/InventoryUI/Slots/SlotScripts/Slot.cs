@@ -20,7 +20,7 @@ namespace InventorySystem
 
         private InventoryItem item;//This is the current item in the inventory, there is always an item however item.GetIsNull() determines if the object contains a real item
         private UnityEngine.Color color;//This is the color of the slot
-        private Image slotImage;//This is the image of the slot
+        private UnityEngine.UI.Image slotImage;//This is the image of the slot
         private InventoryUIManager inventoryUIManager;
         private Vector3 initialChildScale;//holds the scale for the slot child to allow for it to be instantiated with the correct size
         private Vector3 initialSlotChildPosition;//This holds the position of the slot child so it can be instantiated with the correct location
@@ -35,7 +35,7 @@ namespace InventorySystem
         /// </summary>
         private void Awake()
         {
-            slotImage = GetComponent<Image>();
+            slotImage = GetComponent<UnityEngine.UI.Image>();
             color = slotImage.color;
 
             inventoryUIManager = transform.parent.GetComponent<InventoryUIManager>();
@@ -70,7 +70,7 @@ namespace InventorySystem
                     DragItem dragItem = SlotItemHolder.GetComponent<DragItem>();
                     dragItem.SetItem(item);
                     dragItem.SetText();
-                    SlotItemHolder.GetComponent<Image>().sprite = item.GetItemImage();
+                    SlotItemHolder.GetComponent<UnityEngine.UI.Image>().sprite = item.GetItemImage();
                     SlotItemHolder.SetActive(true);
                 }
                 else
@@ -161,11 +161,11 @@ namespace InventorySystem
         {
             return SlotItemHolder.GetComponent<DragItem>().GetTextSize();
         }
-        public Image GetSlotImage()
+        public UnityEngine.UI.Image GetSlotImage()
         {
             return slotImage;
         }
-        public void SetSlotImage(Image newImage)
+        public void SetSlotImage(UnityEngine.UI.Image newImage)
         {
             slotImage = newImage;
         }
